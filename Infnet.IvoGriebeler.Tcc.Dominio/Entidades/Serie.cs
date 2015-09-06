@@ -16,6 +16,11 @@ namespace Infnet.IvoGriebeler.Tcc.Dominio.Entidades
         public int Intervalo { get; set; }
 
         public NivelSerie Nivel { get; set; }
+
+        public Serie()
+        {
+            Exercicios = new List<Exercicio>();
+        }
     }
 
     public enum NivelSerie

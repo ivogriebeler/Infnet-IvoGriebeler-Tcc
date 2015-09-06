@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,8 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ContextoAplicacao.SetDatabaseInitializer();
         }
     }
 }

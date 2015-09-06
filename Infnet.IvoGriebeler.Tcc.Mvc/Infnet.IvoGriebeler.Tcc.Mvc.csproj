@@ -48,6 +48,14 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -187,6 +195,20 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infnet.IvoGriebeler.Tcc.Aplicacao\Infnet.IvoGriebeler.Tcc.Aplicacao.csproj">
+      <Project>{da93c31d-1ad5-48e4-83b2-28ec4dec7d36}</Project>
+      <Name>Infnet.IvoGriebeler.Tcc.Aplicacao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infnet.IvoGriebeler.Tcc.Dominio\Infnet.IvoGriebeler.Tcc.Dominio.csproj">
+      <Project>{53c8481c-c448-4b3d-9b32-fedde5051353}</Project>
+      <Name>Infnet.IvoGriebeler.Tcc.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia\Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.csproj">
+      <Project>{11ce00eb-d714-43f6-bc8d-7647381ba383}</Project>
+      <Name>Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

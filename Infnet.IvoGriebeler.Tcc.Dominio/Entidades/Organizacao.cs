@@ -12,5 +12,10 @@ namespace Infnet.IvoGriebeler.Tcc.Dominio.Entidades
         public string Nome { get; set; }
 
         public IList<Usuario> Usuarios { get; set; }
+
+        public Organizacao()
+        {
+            Usuarios = new List<Usuario>();
+        }
     }
 }

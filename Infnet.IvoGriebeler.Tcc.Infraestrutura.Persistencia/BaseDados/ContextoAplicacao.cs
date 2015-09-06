@@ -23,6 +23,11 @@ namespace Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados
         public DbSet<Serie> Serie { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
 
+        public static void SetDatabaseInitializer()
+        {
+            Database.SetInitializer(new ContextoAplicacaoDatabaseInitializer());
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ExercicioRealizado>()
