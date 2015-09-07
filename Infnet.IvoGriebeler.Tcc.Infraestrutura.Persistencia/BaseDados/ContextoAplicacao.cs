@@ -59,5 +59,10 @@ namespace Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public static ContextoAplicacao Criar()
+        {
+            return new ContextoAplicacao();
+        }
     }
 }

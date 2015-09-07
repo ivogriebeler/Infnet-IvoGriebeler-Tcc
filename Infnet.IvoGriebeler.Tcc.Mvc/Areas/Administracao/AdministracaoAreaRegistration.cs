@@ -15,9 +15,9 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.Areas.Administracao
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Administracao_default",
-                "Administracao/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                name: "Administracao_default",
+                url: "Administracao/{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
