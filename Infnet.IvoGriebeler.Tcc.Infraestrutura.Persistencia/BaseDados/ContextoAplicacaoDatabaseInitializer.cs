@@ -21,7 +21,7 @@ namespace Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados
             var usuarioAdmin = new Usuario
             {
                 NomeCompleto = "Administrador",
-                Email = "admin@local",
+                Email = "admin@admin.local",
                 HashSenha = System.Web.Helpers.Crypto.HashPassword("admin!2015"),
                 Ativo = true,
                 Administrador = true
