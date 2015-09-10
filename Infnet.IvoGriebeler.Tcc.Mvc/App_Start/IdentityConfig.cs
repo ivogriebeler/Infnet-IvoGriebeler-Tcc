@@ -106,7 +106,7 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.App_Start
             if (usuario == null || !usuario.Ativo)
                 return null;
 
-            return new UsuarioAplicacao { Id = usuario.Id, UserName = usuario.Email };
+            return new UsuarioAplicacao { Id = usuario.Id, UserName = usuario.Email, HashSenha = usuario.HashSenha, Administrador = usuario.Administrador };
         }
 
         public async Task<string> GetPasswordHashAsync(UsuarioAplicacao user)
