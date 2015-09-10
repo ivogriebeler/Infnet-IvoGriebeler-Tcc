@@ -1,6 +1,8 @@
 ﻿using Infnet.IvoGriebeler.Tcc.Mvc.App_Start;
 using Infnet.IvoGriebeler.Tcc.Mvc.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +20,11 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.Controllers
         {
         }
 
-        public ContaController(AplicacaoSignInManager signInManager, UsuarioAplicacaoManager usuarioManager)
-        {
-            SignInManager = signInManager;
-            UsuarioManager = usuarioManager;
-        }
+        //public ContaController(AplicacaoSignInManager signInManager, UsuarioAplicacaoManager usuarioManager)
+        //{
+        //    SignInManager = signInManager;
+        //    UsuarioManager = usuarioManager;
+        //}
 
         public AplicacaoSignInManager SignInManager
         {
@@ -52,7 +54,7 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View(new LoginViewModel { Email = "max@hgm.com.br", Senha = "max!2015" });
+            return View();
         }
 
         [HttpPost]
@@ -73,6 +75,20 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.Controllers
                 default:
                     ModelState.AddModelError("", "Tentativa de login inválida.");
                     return View(model);
+            }
+        }
+
+        public ActionResult LogOut()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
             }
         }
 
