@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+@{ 
+    var administrador = User.IsInRole("Administrador");
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,7 +14,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -16,13 +22,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("GinLab", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Meus Exercícios", "Index", "Home")</li>
+                    @if(administrador)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Organizações", "Index", "Organizacao", new { area = "Administracao" }, null)</li>
+                                <li>@Html.ActionLink("Usuários", "Index", "Usuario", new { area = "Administracao" }, null)</li>
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Séries", "Index", "Serie", new { area = "Administracao" }, null)</li>
+                                <li>@Html.ActionLink("Exercícios", "Index", "Exercícios", new { area = "Administracao" }, null)</li>
+                            </ul>
+                        </li>
+                    }
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Olá, @User.Identity.GetUserName()! <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Meus Dados", "Index", "Usuario")</li>
+                            <li>@Html.ActionLink("Sair", "LogOut", "Conta")</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -31,7 +55,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - GinLab</p>
         </footer>
     </div>
 

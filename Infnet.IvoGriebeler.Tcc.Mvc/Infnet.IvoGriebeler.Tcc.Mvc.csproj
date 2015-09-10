@@ -189,6 +189,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Administracao\AdministracaoAreaRegistration.cs" />
     <Compile Include="Areas\Administracao\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administracao\Controllers\OrganizacaoController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,7 +211,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Areas\Administracao\Views\web.config" />
     <Content Include="Areas\Administracao\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Administracao\Views\Shared\_Layout.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -219,6 +219,11 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Administracao\Views\Organizacao\Create.cshtml" />
+    <Content Include="Areas\Administracao\Views\Organizacao\Delete.cshtml" />
+    <Content Include="Areas\Administracao\Views\Organizacao\Details.cshtml" />
+    <Content Include="Areas\Administracao\Views\Organizacao\Edit.cshtml" />
+    <Content Include="Areas\Administracao\Views\Organizacao\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -255,6 +260,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administracao\Models\" />
     <Folder Include="Areas\Administracao\Views\Home\" />
+    <Folder Include="Areas\Administracao\Views\Shared\" />
     <Folder Include="Views\TesteGit\" />
   </ItemGroup>
   <ItemGroup>
