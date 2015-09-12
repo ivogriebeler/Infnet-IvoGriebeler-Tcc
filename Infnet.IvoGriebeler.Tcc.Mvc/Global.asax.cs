@@ -18,6 +18,8 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            AutoMapperConfig.Configure();
+
             ContextoAplicacao.SetDatabaseInitializer();
         }
     }

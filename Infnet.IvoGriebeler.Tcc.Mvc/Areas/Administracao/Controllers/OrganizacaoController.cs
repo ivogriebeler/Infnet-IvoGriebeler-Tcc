@@ -6,9 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Infnet.IvoGriebeler.Tcc.Dominio.Entidades;
-using Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados;
 using Infnet.IvoGriebeler.Tcc.Aplicacao.Interfaces;
+using Infnet.IvoGriebeler.Tcc.Mvc.Areas.Administracao.Models;
+using AutoMapper;
+using Infnet.IvoGriebeler.Tcc.Aplicacao.Dtos;
 
 namespace Infnet.IvoGriebeler.Tcc.Mvc.Areas.Administracao.Controllers
 {
@@ -23,93 +24,100 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.Areas.Administracao.Controllers
 
         public ActionResult Index()
         {
-            return View(servico.ObterTodos());
+            var organizacoes = servico.ObterTodos();
+            var model = Mapper.Map<IList<OrganizacaoModel>>(organizacoes);
+            return View(model);
         }
 
-        public ActionResult Details(Guid? id)
+        public ActionResult Detalhes(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Organizacao organizacao = servico.Obter(id.Value);
+            var organizacao = servico.ObterPorId(id.Value);
             if (organizacao == null)
             {
                 return HttpNotFound();
             }
 
-            return View(organizacao);
+            var model = Mapper.Map<OrganizacaoModel>(organizacao);
+            return View(model);
         }
 
-        public ActionResult Create()
+        public ActionResult Adicionar()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Nome")] Organizacao organizacao)
+        public ActionResult Adicionar(AdicionarOrganizacaoModel model)
         {
             if (ModelState.IsValid)
             {
+                var organizacao = Mapper.Map<OrganizacaoDto>(model);
                 servico.Adicionar(organizacao);
                 return RedirectToAction("Index");
             }
 
-            return View(organizacao);
+            return View(model);
         }
 
-        public ActionResult Edit(Guid? id)
+        public ActionResult Editar(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Organizacao organizacao = servico.Obter(id.Value);
+            var organizacao = servico.ObterPorId(id.Value);
             if (organizacao == null)
             {
                 return HttpNotFound();
             }
 
-            return View(organizacao);
+            var model = Mapper.Map<OrganizacaoModel>(organizacao);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome")] Organizacao organizacao)
+        public ActionResult Editar(OrganizacaoModel model)
         {
             if (ModelState.IsValid)
             {
+                var organizacao = Mapper.Map<OrganizacaoDto>(model);
                 servico.Atualizar(organizacao);
                 return RedirectToAction("Index");
             }
 
-            return View(organizacao);
+            return View(model);
         }
 
-        public ActionResult Delete(Guid? id)
+        public ActionResult Excluir(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Organizacao organizacao = servico.Obter(id.Value);
+            var organizacao = servico.ObterPorId(id.Value);
             if (organizacao == null)
             {
                 return HttpNotFound();
             }
 
-            return View(organizacao);
+            var model = Mapper.Map<OrganizacaoModel>(organizacao);
+            return View(model);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public ActionResult ExcluirPost(Guid id)
         {
-            var organizacao = servico.Obter(id);
+            var organizacao = servico.ObterPorId(id);
             servico.Excluir(organizacao);
 
             return RedirectToAction("Index");

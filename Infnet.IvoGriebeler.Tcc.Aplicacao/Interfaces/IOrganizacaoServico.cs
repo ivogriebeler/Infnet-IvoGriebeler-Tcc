@@ -1,4 +1,4 @@
-﻿using Infnet.IvoGriebeler.Tcc.Dominio.Entidades;
+﻿using Infnet.IvoGriebeler.Tcc.Aplicacao.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace Infnet.IvoGriebeler.Tcc.Aplicacao.Interfaces
 {
     public interface IOrganizacaoServico
     {
-        IList<Organizacao> ObterTodos();
-        Organizacao Obter(Guid id);
-        void Adicionar(Organizacao organizacao);
-        void Atualizar(Organizacao organizacao);
-        void Excluir(Organizacao organizacao);
+        IList<OrganizacaoDto> ObterTodos();
+        OrganizacaoDto ObterPorId(Guid id);
+        OrganizacaoDto Adicionar(OrganizacaoDto organizacao);
+        OrganizacaoDto Atualizar(OrganizacaoDto organizacao);
+        void Excluir(OrganizacaoDto organizacao);
     }
 }

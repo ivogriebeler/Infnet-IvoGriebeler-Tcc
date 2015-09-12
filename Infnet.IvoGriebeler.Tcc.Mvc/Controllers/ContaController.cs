@@ -60,7 +60,7 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(LoginModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Servico.cs" />
+    <Compile Include="Dtos\OrganizacaoDto.cs" />
     <Compile Include="ExercicioRealizadoServico.cs" />
     <Compile Include="ExercicioServico.cs" />
     <Compile Include="Interfaces\IExercicioRealizadoServico.cs" />

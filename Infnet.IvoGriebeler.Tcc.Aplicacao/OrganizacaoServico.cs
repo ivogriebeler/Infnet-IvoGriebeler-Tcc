@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Infnet.IvoGriebeler.Tcc.Dominio.Entidades;
+using Infnet.IvoGriebeler.Tcc.Aplicacao.Dtos;
 
 namespace Infnet.IvoGriebeler.Tcc.Aplicacao
 {
@@ -17,32 +18,56 @@ namespace Infnet.IvoGriebeler.Tcc.Aplicacao
         {
         }
 
-        public Organizacao Obter(Guid id)
+        public OrganizacaoDto ObterPorId(Guid id)
         {
-            return unitOfWork.OrganizacaoRepositorio.ObterPorId(id);
+            var organizacao = unitOfWork.OrganizacaoRepositorio.ObterPorId(id);
+            return organizacao.ToDto(); ;
         }
 
-        public IList<Organizacao> ObterTodos()
+        public IList<OrganizacaoDto> ObterTodos()
         {
-            return unitOfWork.OrganizacaoRepositorio.ObterTodos().ToList();
+            var organizacoesDto = unitOfWork.OrganizacaoRepositorio.ObterTodos()
+                .AsEnumerable()
+                .Select(o => o.ToDto())
+                .ToList();
+            return organizacoesDto;
         }
 
-        public void Adicionar(Organizacao organizacao)
+        public OrganizacaoDto Adicionar(OrganizacaoDto organizacaoDto)
         {
+            var organizacao = new Organizacao { Nome = organizacaoDto.Nome };
             unitOfWork.OrganizacaoRepositorio.Adicionar(organizacao);
             unitOfWork.Salvar();
+            organizacaoDto.Id = organizacao.Id;
+            return organizacaoDto;
         }
 
-        public void Atualizar(Organizacao organizacao)
+        public OrganizacaoDto Atualizar(OrganizacaoDto organizacaoDto)
         {
+            var organizacao = unitOfWork.OrganizacaoRepositorio.ObterPorId(organizacaoDto.Id);
+            organizacao.Nome = organizacaoDto.Nome;
             unitOfWork.OrganizacaoRepositorio.Atualizar(organizacao);
             unitOfWork.Salvar();
+            return organizacao.ToDto();
         }
 
-        public void Excluir(Organizacao organizacao)
+        public void Excluir(OrganizacaoDto organizacaoDto)
         {
-            unitOfWork.OrganizacaoRepositorio.Excluir(organizacao.Id);
+            unitOfWork.OrganizacaoRepositorio.Excluir(organizacaoDto.Id);
             unitOfWork.Salvar();
+        }
+    }
+
+    public static class OrganizacaoServicoExtensions
+    {
+        public static OrganizacaoDto ToDto(this Organizacao organizacao)
+        {
+            var organiacaoDto = new OrganizacaoDto
+            {
+                Id = organizacao.Id,
+                Nome = organizacao.Nome
+            };
+            return organiacaoDto;
         }
     }
 }
