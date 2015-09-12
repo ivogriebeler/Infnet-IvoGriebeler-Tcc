@@ -26,7 +26,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Meus Exercícios", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Meus Exercícios", "Index", "Home", new { area = "" }, null)</li>
                     @if(administrador)
                     {
                         <li class="dropdown">
@@ -43,8 +43,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Olá, @User.Identity.GetUserName()! <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Meus Dados", "Index", "Usuario")</li>
-                            <li>@Html.ActionLink("Sair", "LogOut", "Conta")</li>
+                            <li>@Html.ActionLink("Meus Dados", "Index", "Usuario", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Sair", "LogOut", "Conta", new { area = "" }, null)</li>
                         </ul>
                     </li>
                 </ul>
