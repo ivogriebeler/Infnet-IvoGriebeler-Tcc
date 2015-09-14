@@ -21,7 +21,7 @@ namespace Infnet.IvoGriebeler.Tcc.Aplicacao
         public OrganizacaoDto ObterPorId(Guid id)
         {
             var organizacao = unitOfWork.OrganizacaoRepositorio.ObterPorId(id);
-            return organizacao.ToDto(); ;
+            return organizacao.ToDto();
         }
 
         public IList<OrganizacaoDto> ObterTodos()

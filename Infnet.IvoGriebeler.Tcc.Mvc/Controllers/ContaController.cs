@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Infnet.IvoGriebeler.Tcc.Mvc.Controllers
 {
+    [Authorize]
     public class ContaController : Controller
     {
         private AplicacaoSignInManager signInManager;

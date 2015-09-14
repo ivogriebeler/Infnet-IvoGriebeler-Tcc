@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Infnet.IvoGriebeler.Tcc.Mvc.Controllers
 {
-    [Authorize()]
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

@@ -13,6 +13,7 @@ using Infnet.IvoGriebeler.Tcc.Aplicacao.Dtos;
 
 namespace Infnet.IvoGriebeler.Tcc.Mvc.Areas.Administracao.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class OrganizacaoController : Controller
     {
         private IOrganizacaoServico servico;
