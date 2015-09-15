@@ -12,7 +12,7 @@ namespace Infnet.IvoGriebeler.Tcc.Infraestrutura.Util
     {
         public static RetornoEmail Enviar(string emailDestino, string assuntoEmail, string corpoEmail)
         {
-            var userName = "criar e-mail padrão";
+            var userName = "ivogriebeler.infnet@gmail.com";
             var senha = "qweQwe123@#$";
 
             // Link para habilitar no Gmail
