@@ -70,7 +70,7 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.App_Start
         }
     }
 
-    public class UsuarioAplicacaoStore : IUserStore<UsuarioAplicacao, Guid>, IUserPasswordStore<UsuarioAplicacao, Guid>, IUserLockoutStore<UsuarioAplicacao, Guid>, IUserTwoFactorStore<UsuarioAplicacao, Guid>
+    public class UsuarioAplicacaoStore : IUserStore<UsuarioAplicacao, Guid>, IUserPasswordStore<UsuarioAplicacao, Guid>, IUserLockoutStore<UsuarioAplicacao, Guid>, IUserTwoFactorStore<UsuarioAplicacao, Guid>, IUserSecurityStampStore<UsuarioAplicacao, Guid>
     {
         private DbContext db;
         private DbSet<Usuario> usuarioSet;
@@ -97,7 +97,7 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.App_Start
             if (usuario == null || !usuario.Ativo)
                 return null;
 
-            return new UsuarioAplicacao { Id = usuario.Id, UserName = usuario.Email, HashSenha = usuario.HashSenha, Administrador = usuario.Administrador };
+            return new UsuarioAplicacao(usuario);
         }
 
         public async Task<UsuarioAplicacao> FindByNameAsync(string userName)
@@ -106,7 +106,7 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.App_Start
             if (usuario == null || !usuario.Ativo)
                 return null;
 
-            return new UsuarioAplicacao { Id = usuario.Id, UserName = usuario.Email, HashSenha = usuario.HashSenha, Administrador = usuario.Administrador };
+            return new UsuarioAplicacao(usuario);
         }
 
         public async Task<string> GetPasswordHashAsync(UsuarioAplicacao user)
@@ -181,6 +181,16 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.App_Start
         {
             return Task.FromResult(false);
         }
+
+        public Task SetSecurityStampAsync(UsuarioAplicacao user, string stamp)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> GetSecurityStampAsync(UsuarioAplicacao user)
+        {
+            return Task.FromResult(user.SecurityStamp);
+        }
     }
 
     public class UsuarioAplicacao : IUser<Guid>
@@ -192,6 +202,21 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc.App_Start
         public string HashSenha { get; set; }
 
         public bool Administrador { get; set; }
+
+        public string SecurityStamp { get; set; }
+
+        public UsuarioAplicacao()
+        {
+        }
+
+        public UsuarioAplicacao(Usuario usuario)
+        {
+            Id = usuario.Id;
+            UserName = usuario.Email;
+            HashSenha = usuario.HashSenha;
+            Administrador = usuario.Administrador;
+            SecurityStamp = usuario.SecurityStamp;
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<UsuarioAplicacao, Guid> manager)
         {

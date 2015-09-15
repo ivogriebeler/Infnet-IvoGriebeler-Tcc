@@ -24,7 +24,8 @@ namespace Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados
                 Email = "admin@admin.local",
                 HashSenha = System.Web.Helpers.Crypto.HashPassword("admin!2015"),
                 Ativo = true,
-                Administrador = true
+                Administrador = true,
+                SecurityStamp = Guid.NewGuid().ToString()
             };
             organizacaoInfnet.Usuarios.Add(usuarioAdmin);
 
@@ -72,6 +73,7 @@ namespace Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados
                 Email = "ivo@hgm.com.br",
                 HashSenha = System.Web.Helpers.Crypto.HashPassword("ivo!2015"),
                 Ativo = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
                 Serie = serieCostas
             };
             organizacaoHgm.Usuarios.Add(usuarioIvo);
@@ -106,6 +108,7 @@ namespace Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados
                 Email = "max@hgm.com.br",
                 HashSenha = System.Web.Helpers.Crypto.HashPassword("max!2015"),
                 Ativo = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
                 Serie = serieJoelho
             };
             organizacaoHgm.Usuarios.Add(usuarioMax);

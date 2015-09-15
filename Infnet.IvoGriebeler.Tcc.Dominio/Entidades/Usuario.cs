@@ -23,6 +23,8 @@ namespace Infnet.IvoGriebeler.Tcc.Dominio.Entidades
 
         public bool Ativo { get; set; }
 
+        public string SecurityStamp { get; set; }
+
         public Guid OrganizacaoId { get; set; }
         public virtual Organizacao Organizacao { get; set; }
 

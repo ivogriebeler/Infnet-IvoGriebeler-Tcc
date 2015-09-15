@@ -1,6 +1,7 @@
 ﻿using Infnet.IvoGriebeler.Tcc.Infraestrutura.Persistencia.BaseDados;
 using Infnet.IvoGriebeler.Tcc.Mvc.App_Start;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
@@ -23,7 +24,13 @@ namespace Infnet.IvoGriebeler.Tcc.Mvc
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Conta/Login"),
-                Provider = new CookieAuthenticationProvider()
+                Provider = new CookieAuthenticationProvider
+                {
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<UsuarioAplicacaoManager, UsuarioAplicacao, Guid>(
+                        validateInterval: TimeSpan.FromMinutes(20),
+                        regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager),
+                        getUserIdCallback: (id) => Guid.Parse(id.GetUserId()))
+                }
             });
         }
     }
