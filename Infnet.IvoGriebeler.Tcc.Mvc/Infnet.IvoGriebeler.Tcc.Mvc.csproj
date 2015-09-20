@@ -193,9 +193,11 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Administracao\AdministracaoAreaRegistration.cs" />
+    <Compile Include="Areas\Administracao\Controllers\ExercicioController.cs" />
     <Compile Include="Areas\Administracao\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administracao\Controllers\OrganizacaoController.cs" />
     <Compile Include="Areas\Administracao\Models\AdicionarOrganizacaoModel.cs" />
+    <Compile Include="Areas\Administracao\Models\ExercicioModel.cs" />
     <Compile Include="Areas\Administracao\Models\OrganizacaoModel.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -231,6 +233,7 @@
     <Content Include="Areas\Administracao\Views\Organizacao\Detalhes.cshtml" />
     <Content Include="Areas\Administracao\Views\Organizacao\Editar.cshtml" />
     <Content Include="Areas\Administracao\Views\Organizacao\Index.cshtml" />
+    <Content Include="Areas\Administracao\Views\Exercicio\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
