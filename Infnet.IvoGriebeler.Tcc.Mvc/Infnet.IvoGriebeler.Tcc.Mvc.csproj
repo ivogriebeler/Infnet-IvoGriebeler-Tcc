@@ -234,6 +234,7 @@
     <Content Include="Areas\Administracao\Views\Organizacao\Editar.cshtml" />
     <Content Include="Areas\Administracao\Views\Organizacao\Index.cshtml" />
     <Content Include="Areas\Administracao\Views\Exercicio\Index.cshtml" />
+    <Content Include="Areas\Administracao\Views\Exercicio\Detalhes.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
